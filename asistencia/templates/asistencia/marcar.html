@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block contenido %}
+<section class="tarjeta">
+  <h1>Marcar asistencia</h1>
+  <form method="post">{% csrf_token %}{{ form.as_div }}<button class="boton">Registrar</button></form>
+  <a href="{% url 'asistencia:mis_permisos' %}">Mis solicitudes</a>
+</section>
+<section class="tarjeta">
+  <h2>Marcaciones recientes</h2>
+  <ul>{% for registro in registros %}<li>{{ registro.fecha|date:"d/m/Y" }} · Entrada {{ registro.entrada|time:"H:i" }}{% if registro.salida %} · Salida {{ registro.salida|time:"H:i" }} · {{ registro.horas }} h{% endif %}</li>{% empty %}<li>Aún no hay marcaciones.</li>{% endfor %}</ul>
+</section>
+{% endblock %}

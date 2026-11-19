@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titulo %}Reporte de asistencia{% endblock %}
+{% block contenido %}
+<h1>Reporte de asistencia</h1>
+<a class="enlace" href="?formato=texto">Exportar como texto</a>
+{% if rrhh %}<a class="enlace" href="{% url 'asistencia:permisos_area' %}">Revisar permisos</a>{% endif %}
+<section class="tarjeta">
+  <h2>Horas por jornada</h2>
+  <ul>{% for fila in filas %}<li>{{ fila.nombre }} · {{ fila.fecha|date:"d/m/Y" }} · {{ fila.horas }} h trabajadas · {{ fila.extras }} h extra</li>{% empty %}<li>Todavía no hay jornadas registradas.</li>{% endfor %}</ul>
+</section>
+{% if rrhh %}
+<section class="tarjeta">
+  <h2>Correcciones</h2>
+  <ul>{% for registro in registros %}<li>{{ registro.empleado }} · {{ registro.fecha|date:"d/m/Y" }} · <a href="{% url 'asistencia:corregir' registro.pk %}">Corregir marcación</a></li>{% endfor %}</ul>
+</section>
+{% endif %}
+{% endblock %}

@@ -89,3 +89,21 @@ LOGGING = {
     "handlers": {"consola": {"class": "logging.StreamHandler"}},
     "loggers": {"cuentas.auditoria": {"handlers": ["consola"], "level": "INFO", "propagate": False}},
 }
+
+INSTALLED_APPS.append("asistencia")
+AVISOS_INGRESO = os.getenv("DJANGO_AVISOS_INGRESO", "asistencia.avisos.avisos_ingreso")
+PERMISOS_GRUPOS = {
+    "rrhh": (
+        "asistencia.area.view_area", "asistencia.area.add_area", "asistencia.area.change_area",
+        "asistencia.empleado.view_empleado", "asistencia.empleado.add_empleado", "asistencia.empleado.change_empleado",
+        "asistencia.asistencia.view_asistencia", "asistencia.asistencia.registrar_asistencia",
+        "asistencia.asistencia.corregir_asistencia", "asistencia.asistencia.ver_reportes_globales",
+        "asistencia.permiso.view_permiso", "asistencia.permiso.solicitar_permiso", "asistencia.permiso.aprobar_permiso",
+    ),
+    "jefe": (
+        "asistencia.asistencia.registrar_asistencia", "asistencia.asistencia.ver_reportes_area",
+        "asistencia.permiso.solicitar_permiso", "asistencia.permiso.aprobar_permiso",
+    ),
+    "empleado": ("asistencia.asistencia.registrar_asistencia", "asistencia.permiso.solicitar_permiso"),
+    "contador": ("asistencia.asistencia.ver_reportes_globales",),
+}
