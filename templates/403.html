@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block titulo %}Acceso restringido · {{ caso.titulo }}{% endblock %}
+{% block contenido %}
+<section class="tarjeta">
+  <p class="sobrelinea">Acceso restringido</p>
+  <h1>Tu cuenta no tiene permiso</h1>
+  <p>Si necesitas ingresar a esta sección, solicita acceso al administrador.</p>
+  <a class="boton" href="{% url 'inicio' %}">Volver al inicio</a>
+</section>
+{% endblock %}

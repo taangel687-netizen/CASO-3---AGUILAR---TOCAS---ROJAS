@@ -1,0 +1,67 @@
+:root {
+  color-scheme: light;
+  --fondo: #f2f3f8;
+  --tinta: #18233d;
+  --suave: #4b6158;
+  --borde: #d7ddeb;
+  --verde: #243963;
+  --lima: #f9dfa6;
+  font: 16px/1.55 "Segoe UI", system-ui, sans-serif;
+  color: var(--tinta);
+  background: var(--fondo);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
+a { color: inherit; text-underline-offset: .24em; }
+:focus-visible { outline: 3px solid #8d6226; outline-offset: 4px; }
+.saltar { position: absolute; top: -5rem; background: white; padding: .7rem; z-index: 2; }
+.saltar:focus { top: .5rem; }
+.barra, footer { padding: 1.15rem max(1.2rem, calc((100% - 70rem) / 2)); }
+.barra { display: flex; justify-content: space-between; align-items: center; gap: .8rem 1.5rem; flex-wrap: wrap; border-bottom: 1px solid var(--borde); }
+.marca { display: inline-flex; align-items: center; gap: .65rem; font-weight: 750; text-decoration: none; }
+.marca span { background: var(--verde); color: var(--lima); border-radius: .55rem; padding: .18rem .55rem; }
+nav { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; font-size: .92rem; }
+.enlace { border: 0; padding: 0; font: inherit; color: inherit; background: transparent; text-decoration: underline; text-underline-offset: .24em; cursor: pointer; }
+.contenedor { width: min(70rem, calc(100% - 2.4rem)); margin: clamp(1.7rem, 9vh, 6.2rem) auto 2rem; }
+footer { color: var(--suave); font-size: .85rem; border-top: 1px solid var(--borde); }
+.acceso { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1rem; }
+.hero, .tarjeta { border-radius: 1.4rem; padding: clamp(1.45rem, 5vw, 4rem); }
+.hero {
+  color: #f7f9ec;
+  background: radial-gradient(ellipse at 100% 120%, #465f95, transparent 70%), var(--verde);
+  min-height: 24rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-start;
+  gap: .7rem;
+}
+.hero h1 { max-width: 12ch; font-size: clamp(2.45rem, 6vw, 5.1rem); line-height: .99; letter-spacing: -.065em; margin: .25rem 0 .9rem; }
+.sobrelinea { font-size: .77rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; margin: 0; }
+.hero .sobrelinea { color: var(--lima); }
+.tarjeta { background: #fff; border: 1px solid var(--borde); }
+.tarjeta h1, .tarjeta h2 { line-height: 1.1; margin: .55rem 0 1rem; letter-spacing: -.04em; overflow-wrap: anywhere; }
+.tarjeta h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+.tarjeta h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+.tarjeta p:not(.sobrelinea), dt { color: var(--suave); }
+.campo { margin: 1rem 0; }
+.campo label { display: block; font-size: .9rem; font-weight: 680; margin-bottom: .3rem; }
+.campo input { width: 100%; background: #f8faf6; border: 1px solid #a8b8ad; border-radius: .55rem; padding: .72rem .85rem; font: inherit; color: inherit; }
+.boton { display: inline-flex; align-items: center; gap: 1rem; border: 1px solid transparent; border-radius: .62rem; padding: .66rem 1rem; font: inherit; font-weight: 720; text-decoration: none; cursor: pointer; background: var(--verde); color: white; }
+.boton:hover { filter: brightness(1.12); }
+.inverso { color: var(--tinta); background: var(--lima); }
+.secundario { color: white; background: transparent; border-color: currentColor; }
+.formulario .boton { width: 100%; justify-content: space-between; margin-top: .45rem; }
+.errorlist { color: #8a2525; background: #fff2ee; border-radius: .5rem; padding: .45rem .6rem .45rem 1.7rem; font-size: .9rem; }
+.aviso { background: #eef3d7; padding: .85rem 1.15rem; border: 1px solid #ccd79f; border-radius: .65rem; }
+dl { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; margin: 1.5rem 0; }
+dd { margin: .2rem 0 0; overflow-wrap: anywhere; font-weight: 680; }
+.tarjeta .enlace { margin-inline-start: .65rem; }
+.desborde { overflow: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; white-space: nowrap; font-size: .88rem; }
+th, td { padding: .55rem .65rem; border-bottom: 1px solid var(--borde); }
+@media (max-width: 760px) {
+  .acceso { grid-template-columns: 1fr; }
+  .acceso .hero { min-height: 13rem; }
+}

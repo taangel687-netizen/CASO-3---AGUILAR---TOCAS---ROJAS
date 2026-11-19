@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block contenido %}
+<section class="portada">
+  <div class="hero">
+    <p class="sobrelinea">{{ caso.institucion }}</p>
+    <h1>{{ caso.titulo }}</h1>
+    {% if user.is_authenticated %}
+    <a class="boton inverso" href="{% url 'panel' %}">Abrir mi cuenta <span aria-hidden="true">→</span></a>
+    {% else %}
+    <a class="boton inverso" href="{% url 'ingreso' %}">Iniciar sesión <span aria-hidden="true">→</span></a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

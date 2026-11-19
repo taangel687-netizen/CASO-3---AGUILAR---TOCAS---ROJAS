@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block titulo %}Iniciar sesión · {{ caso.titulo }}{% endblock %}
+{% block contenido %}
+<div class="acceso">
+  <section class="hero">
+    <p class="sobrelinea">{{ caso.institucion }}</p>
+    <h1>{{ caso.titulo }}</h1>
+  </section>
+  <section class="tarjeta formulario" aria-labelledby="titulo-ingreso">
+    <h2 id="titulo-ingreso">Iniciar sesión</h2>
+    <p>Usa tu correo <strong>@{{ caso.dominio }}</strong>.</p>
+    <form method="post">
+      {% csrf_token %}
+      {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+      {{ form.non_field_errors }}
+      {% for campo in form %}
+      <div class="campo">{{ campo.label_tag }}{{ campo }}{{ campo.errors }}</div>
+      {% endfor %}
+      <button class="boton" type="submit">Ingresar <span aria-hidden="true">→</span></button>
+    </form>
+  </section>
+</div>
+{% endblock %}
